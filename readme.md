@@ -1,11 +1,21 @@
-Note: highly experiment does not work yet
-to build
+This is example of sending CRTP velocity commands from AI-deck to crazyflie over CPX.
+# Read me first
+NOTE: DO NOT RUN THIS WITH PROPELLERS ON CRAZYFLIE, THE VEHICLE WILL FLY IN RANDOM DIRECTION. REMOVE PROPELLER BEFORE TESTING.
+
+# Pre-requisits
+
+Please Follow getting started with AI-deck guide from bitcraze https://www.bitcraze.io/documentation/tutorials/getting-started-with-aideck/
+
+# building
 ```
-cd AI_deck_send_vel_v2
+cd AI_deck_send_vel_send_cpx
 docker run --rm -v ${PWD}:/module aideck-with-autotiler tools/build/make-example . image
 ```
-to flash
+# Flashing
+
+Connect AI-deck with JTAG then run:
 
 ```
-cfloader flash ./BUILD/GAP8_V2/GCC_RISCV_FREERTOS/target.board.devices.flash.img deck-bcAI:gap8-fw -w radio://0/80/2M
+docker run --rm -v ${PWD}:/module --device /dev/ttyUSB0 --privileged -P bitcraze/aideck tools/build/make-upload-jtag . flash
 ```
+Restart the Crazyflie. After about 20-30 seconds the motors should start spinning.

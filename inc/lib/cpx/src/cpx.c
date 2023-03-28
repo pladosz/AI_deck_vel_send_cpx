@@ -14,7 +14,7 @@
  * the Free Software Foundation, in version 3.
  *
  * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * but WITHOUT ANY WARRANTY; without even the implied warranty ofis narrower than values of its type
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
@@ -26,8 +26,8 @@
 #include "com.h"
 
 typedef struct {
-  CPXTarget_t destination : 1;
-  CPXTarget_t source : 1;
+  CPXTarget_t destination : 3;
+  CPXTarget_t source : 3;
   bool lastPacket : 1;
   bool reserved : 1;
   CPXFunction_t function : 8;
